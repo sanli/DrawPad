@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'PageFlipDemo' target in the 'PageFlipDemo' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
