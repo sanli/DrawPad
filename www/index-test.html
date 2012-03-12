@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patterns</title>
+        <script type="text/javascript">
+            
+            function init() {
+                var can = document.getElementById("can");
+                var ctx = can.getContext("2d");
+                
+                // get images into objects
+                var dot = document.getElementById("dot");
+                // get images into objects
+                var dot1 = document.getElementById("dot1");
+                
+                console.dir(dot);
+                                
+                ctx.drawImage(dot, 100,100);
+                ctx.drawImage(dot1, 100,500);
+                
+                // drawLine with pic
+                for( var i = 0 ; i <= 1000 ; i++){
+                    //if(i < 50)
+                        var size = 50 +  (i / 10)  * 4 ;
+                    //else
+                    //    var size = 40 -  (i / 10)  * 4  ;
+                    
+                    //ctx.drawImage(dot,100 + i , 100  ,  Math.round( size ) ,   Math.round(size ));
+                    ctx.drawImage(dot,100 + i , 100  ,   size  ,   size );
+                }
+                
+                
+                // drawLine with pic
+                for( var i = 0 ; i <= 200 ; i++){
+                    var size = 50 +  (i / 10)  * 4 ;
+                    ctx.drawImage(dot1, 100 + i * 1 , 300 ,  size, size );
+                }
+                
+                
+            }
+            
+            </script>
+    </head>
+    
+    <body onload="init()">
+        
+        <img id="dot" src="img/a.png"><br>
+        <img id="dot1" src="img/b.png"><br>
+        <canvas id="can" height="800" width="800"></canvas>
+                    
+    </body>
+</html>

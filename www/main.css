@@ -1,0 +1,56 @@
+body, h2, p {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #444;
+	/*color: #333;*/
+	font-family: Helvetica, sans-serif;
+}
+
+#book {
+	background-color: #ffffff;
+	position: absolute;
+	width: 1024px;
+	height: 648px;
+	left: 0px;
+	top: 0px;
+	margin-left: 0px;
+	margin-top: 50px;
+}
+
+#pages section {
+    background-color: #F8F8F8;
+	display: block;
+	width: 1024px;
+	height: 648px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: hidden;
+}
+
+#pages section>div {
+    display: block;
+    width: 400px;
+    height: 250px;
+    font-size: 12px;
+}
+
+#pages section p,
+#pages section h2 {
+    padding: 3px 35px;
+    line-height: 1.4em;
+    text-align: justify;
+}
+
+#pages section h2{
+    margin: 15px 0 10px;
+}
+
+#pageflip-canvas {
+	position: absolute;
+	z-index: 100;
+    display:none;
+}

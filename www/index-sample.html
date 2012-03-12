@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link type="text/css" href="main.css" rel="stylesheet" media="screen" />
+        <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+        <script type="text/javascript" charset="utf-8" src="jq.mobi.min.js"></script>
+	</head>
+	<body>
+		<div id="drawboard">
+			<canvas id="board-canvas"></canvas>
+			<div id="color-panle">
+				<div id="red"></div>
+                <div id="green"></div>
+                <div id="yellow"></div>
+                <div id="blue"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="canvas.js"></script>
+        <script type="text/javascript">
+            // 阻止缺省的拖动行为
+            function preventBehavior(e) 
+            { 
+                e.preventDefault(); 
+            };
+            document.addEventListener("touchmove", preventBehavior, false);
+            
+            
+            /* 处理打开链接事件 */
+            function handleOpenURL(url)
+            {
+                console.log("openURL :" + url) ;
+            }
+            
+            function onBodyLoad()
+            {		
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+            
+            
+            function onDeviceReady()
+            {
+                console.log("onDeviceReady...");
+                $("#load").on("click", function(){
+                              console.log("start loading by ajax");
+                              
+                              var opts={
+                              type:"GET",
+                              success:function(data){  console.log(data)  },
+                              url:"antest.html"
+                              }
+                              $.ajax(opts);
+                    }) ;
+                
+            }
+            
+        </script>
+	</body>
+<html>

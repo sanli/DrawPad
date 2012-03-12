@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link type="text/css" href="main.css" rel="stylesheet" media="screen" />
+        <script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+        <script type="text/javascript" charset="utf-8" src="jq.mobi.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="touch.js"></script>
+        <script type="text/javascript">
+            // 阻止缺省的拖动行为
+            function preventBehavior(e) 
+            { 
+                e.preventDefault(); 
+            };
+            document.addEventListener("touchmove", preventBehavior, false);
+            
+            
+            /* 处理打开链接事件 */
+            function handleOpenURL(url)
+            {
+                console.log("openURL :" + url) ;
+            }
+            
+            function onBodyLoad()
+            {		
+                //console.log("onBodyLoad()");
+                //document.addEventListener("deviceready", onDeviceReady, false);
+                onDeviceReady();
+            }
+            
+            
+            function onDeviceReady()
+            {
+                console.log("onDeviceReady...");
+                $("#load").on("click", function(){
+                 console.log("start loading by ajax");
+                 
+                 var opts={
+                         type:"GET",
+                              
+                         success:function(data){
+                              $("#page").html(data);
+                              AN.Controller.onload();
+                         },
+                        
+                        
+                         url:"antest.html"         
+                     } ;
+                     $.ajax(opts);
+                              
+                 }) ;
+                
+                $("#run").on("click", function(){
+                    console.log("what is AN:" + AN);
+                 });
+                
+            }
+            
+            window.addEventListener('load', function(){
+                //onBodyLoad();
+                initflip();
+            });
+            
+         </script>
+	</head>
+	<body>
+		<div id="book">
+			<canvas id="pageflip-canvas"></canvas>
+			<div id="pages">
+				<section>
+					<div>
+						<h2>History</h2>
+						<p>Canvas was initially introduced by Apple for use inside their own Mac OS X WebKit component, powering applications like Dashboard widgets and the Safari browser. Later, it was adopted by Gecko browsers and Opera and standardized by the WHATWG on new proposed specifications for next generation web technologies.</p>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Usage</h2>
+						<p>Canvas consists of a drawable region defined in HTML code with height and width attributes. JavaScript code may access the area through a full set of drawing functions similar to other common 2D APIs, thus allowing for dynamically generated graphics. Some anticipated uses of canvas include building graphs, animations, games, and image composition.</p>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Reactions</h2>
+						<p>At the time of its introduction the canvas element was met with mixed reactions from the web standards community. There have been arguments against Apple's decision to create a new proprietary element instead of supporting the SVG standard. There are other concerns about syntax e.g. the absence of a namespace.</p>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Support</h2>
+						<p>The element is currently supported by the latest versions of Mozilla Firefox, Google Chrome, Safari, and Opera. It is not natively implemented by Internet Explorer (IE) as of version 8, though support is in development for Internet Explorer 9; however, many of the Canvas element's features can be supported in IE, for example by using Google or Mozilla plugins, JavaScript libraries and either Adobe Flash or IE's proprietary VML.</p>
+					</div>
+				</section>
+			</div>
+		</div>
+        <script type="text/javascript" charset="utf-8" src="pageflip.js"></script>
+        <script>
+            // init flip
+            function initflip(){
+                var flip = new Pageflip({ canvas : "pageflip-canvas"});
+                
+                $("#pre").on('click' , function(event){
+                                 flip.fwd(callback);             
+                             });
+                
+                
+                $("#next").on('click' , function(event){
+                                 flip.bwd(callback);             
+                             });
+                
+                //翻页完成的回调函数
+                callback = function(){
+                    console.log("翻页完成，可以做其他的动作了");
+                }
+                
+            }
+            
+        </script>
+        <div id="control" style="z-index:200;">
+            <a id="pre" href="#"> &lt;上一页</a> | <a id="next" href="#">下一页></a>
+        </div>
+	</body>
+<html>
